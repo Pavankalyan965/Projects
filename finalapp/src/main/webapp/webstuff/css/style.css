@@ -1,0 +1,219 @@
+@import "https://use.fontawesome.com/releases/v5.5.0/css/all.css";
+*
+{
+	padding:0;
+	margin:0;
+
+}
+
+body
+{
+background-image:url(webstuff/images/pic2.jpg);
+background-size: cover;
+background-position: center;
+box-sizing: border-box;
+font-family: inherit;
+}
+
+.categories
+{
+	border: 2px;
+	border-color:blue;
+	background-color: #fff;
+	padding:10px;
+}
+.categories ul
+{  
+	display: inline-flex;
+	list-style: none;
+	
+	
+}
+.categories ul li
+{
+
+	padding:20px;
+	 border-color:red;
+	border-right-color:red;
+}
+.categories ul li:hover
+{
+	background-color: DBE2A0;	
+}
+.categories ul li a
+{
+	text-decoration: none;
+}
+
+.fashion
+{
+	border: 2px;
+	border-color:blue;
+	background-color: #fff;
+	padding:10px;
+}
+.fashion ul
+{  
+	display: inline-flex;
+	list-style: none;
+	
+	
+}
+.fashion ul li
+{
+
+	padding:20px;
+	 border-color:red;
+	border-right-color:red;
+}
+.fashion ul li:hover
+{
+	background-color: DBE2A0;	
+}
+.fashion ul li a
+{
+	text-decoration: none;
+}
+
+.Sports
+{
+	border: 2px;
+	border-color:blue;
+	background-color: #fff;
+	padding:10px;
+}
+.Sports ul
+{  
+	display: inline-flex;
+	list-style: none;
+	
+	
+}
+.Sports ul li
+{
+
+	padding:20px;
+	 border-color:red;
+	border-right-color:red;
+}
+.Sports ul li:hover
+{
+	background-color: DBE2A0;	
+}
+.Sports ul li a
+{
+	text-decoration: none;
+}
+
+.login
+{
+	background:skyblue;
+	border-color: black;
+	text-align: center;
+}
+
+.login ul
+{
+	display: inline-flex;
+	list-style: none;
+	color: white;
+}
+
+.login ul li
+{
+	width: 120px;
+	margin: 15px;
+	padding: 15px;
+}
+.login ul li a
+{
+		color:white;
+		text-decoration: none;		
+}
+.active, .login ul li:hover
+{
+		background: #2bab0d;
+		border-radius: 3px;
+}
+
+.login .fa
+{
+	margin-right: 8px;
+}
+
+.sub-menu-manage
+{
+	display: none;	
+}
+
+.login ul li:hover .sub-menu-manage
+{
+	display: block;
+	position: absolute;
+	background: rgb(0,100,0);
+	margin-top: 15px;
+	margin-left: -15px;
+}
+
+.login ul li:hover .sub-menu-manage ul
+{
+	display: block;
+	margin: 10px;
+}
+
+.login ul li:hover .sub-menu-manage ul li
+{
+	width: 150px;
+	padding: 10px;
+	border-bottom: 1px dotted #fff;
+	background: transparent;
+	border-radius: 0;
+	text-align: left;
+}
+.login ul li:hover .sub-menu-manage ul li:last-child 
+{
+	border-bottom: none;
+}
+
+.login ul li:hover .sub-menu-manage ul li a:hover
+{
+	color: yellow;
+}
+
+.sub-menu-product
+{
+	display: none;	
+}
+
+.login ul li:hover .sub-menu-product
+{
+	display: block;
+	position: absolute;
+	background: rgb(0,100,0);
+	margin-top: 15px;
+	margin-left: -15px;
+}
+
+.login ul li:hover .sub-menu-product ul
+{
+	display: block;
+	margin: 10px;
+}
+
+.login ul li:hover .sub-menu-product ul li
+{
+	width: 150px;
+	padding: 10px;
+	border-bottom: 1px dotted #fff;
+	background: transparent;
+	border-radius: 0;
+	text-align: left;
+}
+.login ul li:hover .sub-menu-product ul li:last-child 
+{
+	border-bottom: none;
+}
+.login ul li:hover .sub-menu-product ul li a:hover
+{
+	color: yellow;
+}
