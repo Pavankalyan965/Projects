@@ -72,7 +72,15 @@ public class DaoImple implements DaoInterface
 		ses.close();
 		return b;
 	}
-	
+	public List<Customer> viewCustomerById(Customer c)
+	{ 
+		List<Customer> al=new ArrayList<Customer>();
+		Session ses=sf.openSession();
+		Query q=ses.createQuery("from Customer where email='"+c.getName()+"'");
+		al=q.list();
+		ses.close();
+		return al;
+	}
 	public boolean addProduct(Product p)
 	{  
 		boolean b=false;
@@ -181,13 +189,14 @@ public class DaoImple implements DaoInterface
 		boolean b=false;
 		c.setName(name);
 		Session ses=sf.openSession();
-		
-		c=(Cart)ses.createQuery("from Cart where pid='"+c.getPid()+"' and name='"+c.getName()+"'");
 		Transaction tx=ses.beginTransaction();
+		Query q=ses.createQuery("delete from Cart where pid='"+c.getPid()+"' and name='"+c.getName()+"'");
+	    q.executeUpdate();
+	    tx.commit();
 		ses.delete(c);
-		tx.commit();
 		ses.close();
 		return b;
+		
 	}
 	public List<Product> searchProducts(String search) 
 	{
@@ -376,13 +385,17 @@ public class DaoImple implements DaoInterface
 		return al;
 	
 	}
-	public List<Address> viewAddress( String name)
+	public List<Address> viewAddress(String name)
 	{
+		System.out.println("name3"+name);
+		
 		List<Address> l=null;
 		Session ses=sf.openSession();
 		Query q=ses.createQuery("from Address where cid='"+name+"'");
-		
 		l=q.list();
+		System.out.println("na"+l);
+		System.out.println("name2"+name);
+		
 		ses.close();
 		return l;
 	}
@@ -442,11 +455,11 @@ public class DaoImple implements DaoInterface
 		ses.close();
 		return l;
 	}
-	public List<Product> viewElectronics(String name) 
+	public List<Product> viewElectronics(String Electronics) 
 	{
 		List<Product> lp=null;
 		Session ses=sf.openSession();
-		Query q=ses.createQuery("from Product where ctype='"+name+"'");
+		Query q=ses.createQuery("from Product where ctype='"+Electronics+"'").setFirstResult(0).setMaxResults(5);
 		lp=q.list();
 		ses.close();
 		return lp;
@@ -455,36 +468,60 @@ public class DaoImple implements DaoInterface
 	{
 		List<Product> lp=null;
 		Session ses=sf.openSession();
-		Query q=ses.createQuery("from Product where ctype='"+Fashion+"'");
+		Query q=ses.createQuery("from Product where ctype='"+Fashion+"'").setFirstResult(0).setMaxResults(5);
 		lp=q.list();
 		ses.close();
 		return lp;
 	}
-	public List<Product> viewSports(String name) 
+	public List<Product> viewSports(String Sports) 
 	{
 		List<Product> lp=null;
 		Session ses=sf.openSession();
-		Query q=ses.createQuery("from Product where ctype='"+name+"'");
+		Query q=ses.createQuery("from Product where ctype='"+Sports+"'").setFirstResult(0).setMaxResults(5);
 		lp=q.list();
 		ses.close();
 		return lp;
 	}
-	public List<Product> viewHousing(String name) 
+	public List<Product> viewHousing(String Housing) 
 	{
 		List<Product> lp=null;
 		Session ses=sf.openSession();
-		Query q=ses.createQuery("from Product where ctype='"+name+"'");
+		Query q=ses.createQuery("from Product where ctype='"+Housing+"'").setFirstResult(0).setMaxResults(5);
 		lp=q.list();
 		ses.close();
 		return lp;
 	}
-	public List<Product> viewGroceries(String name) 
+	public List<Product> viewGroceries(String Groceries) 
 	{
 		List<Product> lp=null;
 		Session ses=sf.openSession();
-		Query q=ses.createQuery("from Product where ctype='"+name+"'");
+		Query q=ses.createQuery("from Product where ctype='"+Groceries+"'").setFirstResult(0).setMaxResults(5);
 		lp=q.list();
 		ses.close();
 		return lp;
 	}
+	public boolean orders(Product p, Transactions tr) 
+	{
+		boolean b=false;
+		Orders o=new Orders();
+		Cart c1=new Cart();
+		Session ses=sf.openSession();
+		tr=(Transactions)ses.get(Transactions.class,tr.getTid());
+		
+			o.setCid(tr.getCid());
+			o.setTid(tr.getTid());
+			o.setOdate(tr.getTdate());
+			o.setFilename(p.getFilename());
+			o.setPname(p.getPname());
+			o.setPrice(p.getPprice());
+			o.setQty(p.getPqty());
+			Session ses1=sf.openSession();
+			Transaction tx=ses1.beginTransaction();
+			ses1.save(o);
+			tx.commit();
+		b=true;
+		return b;
+
+	}
+	
 }

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.jboss.logging.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,16 +32,20 @@ import finalapp.model.Transactions;
 @Controller
 public class HomeController 
 {
-	public static final String cloud="F://cloud";
+	public static final String cloud="F:\\cloud";
 	@RequestMapping("/")
 	public ModelAndView homePage()
 	{
-		String name="Electronics";
-		List<Product> lp=new DaoImple().viewElectronics(name);
+		String Electronics="Electronics";
+		List<Product> lp=new DaoImple().viewElectronics(Electronics);
 		String Fashion="Fashion";
 		List<Product> lf=new DaoImple().viewFashion(Fashion);
 		String Sports="Sports";
 		List<Product> ls=new DaoImple().viewSports(Sports);
+		String Groceries="Groceries";
+		List<Product> lg=new DaoImple().viewGroceries(Groceries);
+		String Housing="Housing";
+		List<Product> lh=new DaoImple().viewHousing(Housing);
 		File f=new File("F://cloud");
 		File filenames[]=f.listFiles();
 		ModelAndView mav=new ModelAndView("index");
@@ -50,7 +55,49 @@ public class HomeController
 		mav.addObject("products",lf);
 		mav.addObject("filenames",filenames);  
 		mav.addObject("filepath",f);
-		mav.addObject("products",ls);
+		mav.addObject("Sports",ls);
+		mav.addObject("filenames",filenames);  
+		mav.addObject("filepath",f);
+		mav.addObject("Groceries",lg);
+		mav.addObject("filenames",filenames);  
+		mav.addObject("filepath",f);
+		mav.addObject("Housing",lh);
+		mav.addObject("filenames",filenames);  
+		mav.addObject("filepath",f);
+		mav.addObject("msg","viewproductslist");
+		
+		
+		return mav;
+	}
+	@RequestMapping("/reqcus")
+	public ModelAndView cushomePage()
+	{
+		String Electronics="Electronics";
+		List<Product> lp=new DaoImple().viewElectronics(Electronics);
+		String Fashion="Fashion";
+		List<Product> lf=new DaoImple().viewFashion(Fashion);
+		String Sports="Sports";
+		List<Product> ls=new DaoImple().viewSports(Sports);
+		String Groceries="Groceries";
+		List<Product> lg=new DaoImple().viewGroceries(Groceries);
+		String Housing="Housing";
+		List<Product> lh=new DaoImple().viewHousing(Housing);
+		File f=new File("F://cloud");
+		File filenames[]=f.listFiles();
+		ModelAndView mav=new ModelAndView("customer");
+		mav.addObject("product",lp);
+		mav.addObject("filenames",filenames);  
+		mav.addObject("filepath",f);
+		mav.addObject("products",lf);
+		mav.addObject("filenames",filenames);  
+		mav.addObject("filepath",f);
+		mav.addObject("Sports",ls);
+		mav.addObject("filenames",filenames);  
+		mav.addObject("filepath",f);
+		mav.addObject("Groceries",lg);
+		mav.addObject("filenames",filenames);  
+		mav.addObject("filepath",f);
+		mav.addObject("Housing",lh);
 		mav.addObject("filenames",filenames);  
 		mav.addObject("filepath",f);
 		mav.addObject("msg","viewproductslist");
@@ -66,7 +113,7 @@ public class HomeController
 	@RequestMapping("/reqadminloginform")
 	public ModelAndView adminLoginForm()
 	{
-		ModelAndView mav=new ModelAndView("index");
+		ModelAndView mav=new ModelAndView("login");
 		mav.addObject("msg","admin");
 		return mav;
 	}
@@ -82,33 +129,49 @@ public class HomeController
 		}
 		else
 		{
-			mav=new ModelAndView("index");
+			mav=new ModelAndView("login");
 			mav.addObject("msg","adminfail");
 		}
 		return mav;
 	}
-	@RequestMapping("/reqadminlogout")
+	@RequestMapping("/reqlogout")
 	public ModelAndView adminLogout()
 	{
-		Product p=new Product();
-		String name="Electronics";
-		List<Product> lp=null;
-		lp=new DaoImple().viewElectronics(name);
-		
-		lp=new DaoImple().viewFashion(name);
+		String Electronics="Electronics";
+		List<Product> lp=new DaoImple().viewElectronics(Electronics);
+		String Fashion="Fashion";
+		List<Product> lf=new DaoImple().viewFashion(Fashion);
+		String Sports="Sports";
+		List<Product> ls=new DaoImple().viewSports(Sports);
+		String Groceries="Groceries";
+		List<Product> lg=new DaoImple().viewGroceries(Groceries);
+		String Housing="Housing";
+		List<Product> lh=new DaoImple().viewHousing(Housing);
 		File f=new File("F://cloud");
 		File filenames[]=f.listFiles();
 		ModelAndView mav=new ModelAndView("index");
-		mav.addObject("products",lp); 
+		mav.addObject("product",lp);
 		mav.addObject("filenames",filenames);  
-		mav.addObject("filepath",f);           
-		mav.addObject("msg","viewproductslist");
+		mav.addObject("filepath",f);
+		mav.addObject("products",lf);
+		mav.addObject("filenames",filenames);  
+		mav.addObject("filepath",f);
+		mav.addObject("Sports",ls);
+		mav.addObject("filenames",filenames);  
+		mav.addObject("filepath",f);
+		mav.addObject("Groceries",lg);
+		mav.addObject("filenames",filenames);  
+		mav.addObject("filepath",f);
+		mav.addObject("Housing",lh);
+		mav.addObject("filenames",filenames);  
+		mav.addObject("filepath",f);
+		mav.addObject("msg","viewproductslist");		
 		return mav;
 	}
 	@RequestMapping("/reqcustomerregisterform")
 	public ModelAndView customerRegisterForm()
 	{
-		ModelAndView mav=new ModelAndView("index");
+		ModelAndView mav=new ModelAndView("login");
 		mav.addObject("msg","addingcustomerform");
 		return mav;
 	}
@@ -120,7 +183,7 @@ public class HomeController
 		b=new DaoImple().customerRegister(c);
 		if(b)
 		{
-			mav=new ModelAndView("index");
+			mav=new ModelAndView("login");
 			mav.addObject("msg","addcustomer");
 		}
 		return mav;
@@ -128,7 +191,7 @@ public class HomeController
 	@RequestMapping("/reqcustomerloginform")
 	public ModelAndView customerLoginForm()
 	{
-		ModelAndView mav=new ModelAndView("index");
+		ModelAndView mav=new ModelAndView("login");
 		mav.addObject("msg","customer");
 		return mav;
 	}
@@ -139,10 +202,17 @@ public class HomeController
 		hs.setAttribute("name",customerlogin.getEmail());
 		ModelAndView mav=null;
 		boolean b=false;
+		List<Customer> al=null;
 		b=new DaoImple().customerLogin(customerlogin);
-		if(b)
+	   if(b)
 		{
-			mav=new ModelAndView("welcomecustomer");
+			//al=new DaoImple().viewCustomerById(customerlogin);
+			
+			//mav.addObject("customerlogin","al");
+		    //mav.addObject("msg","msgcus");
+			mav=new ModelAndView("customer");
+			mav.setViewName("redirect:/reqcus");
+			System.out.println(al);		
 		}
 		else
 		{
@@ -151,24 +221,84 @@ public class HomeController
 		}
 		return mav;
 	}
+	//public ModelAndView paymentLoginForm(@RequestParam("pid") String pid,,@RequestParam("pname") String pname,@RequestParam("pqty") String pqty,@RequestParam("p") String pprice)
+	
+	@RequestMapping("/reqpaymentloginform")
+	public ModelAndView paymentLoginForm(@ModelAttribute("product") Product product)
+	{
+		ModelAndView mav=new ModelAndView("payment");
+		mav.addObject("product", product);
+		mav.addObject("msg","customer");
+		
+		return mav;
+	}
+	
+	@RequestMapping("/reqpaymentlogin")
+	public ModelAndView paymentLogin(@ModelAttribute("paymentlogin") Customer paymentlogin,HttpSession hs,@ModelAttribute("product") Product product)
+	{ 
+		System.out.println("pid"+product.getPid());
+		System.out.println("price"+product.getPprice());
+		System.out.println("qty"+product.getPqty());
+		System.out.println("pic name"+product.getPname());
+		System.out.println("product info"+product.getProductinfo());
+		
+		hs.setAttribute("name",paymentlogin.getEmail());
+		ModelAndView mav=null;
+		boolean b=false;
+		List<Customer> al=null;
+		List<Address> l=null;
+		Date d1=new Date();
+		java.sql.Date d=new java.sql.Date(d1.getYear(),d1.getMonth(),d1.getDate());
+		b=new DaoImple().customerLogin(paymentlogin);
+		String name=paymentlogin.getEmail();
+		System.out.println("bname"+name);
+		l=new DaoImple().viewAddress(name);
+		System.out.println("name:"+l);
+		if(b)
+		{
+			mav=new ModelAndView("customer");
+			mav.addObject("msg","tran2");
+			mav.addObject("address",l);
+			mav.addObject("odate",d.toString());
+	    	mav.addObject("product", product);
+		}
+		else
+		{
+			mav=new ModelAndView("index");
+			mav.addObject("msg","customerfail");
+		}
+		return mav;
+	}
+	
 	@RequestMapping("/reqaddtocart2")
 	 public ModelAndView addToCart(@ModelAttribute("product") Product product,HttpSession hs)  
 	 {
 		 boolean b=false;
-		 String name=hs.getAttribute("name").toString();
-		 System.out.println("name"+name);
-		 b=new DaoImple().addToCart(product,name);
+		 ModelAndView mav = null;
+		// String name=null;
+		 //name=hs.getAttribute("name").toString();
+		 if(hs.getAttribute("name").toString()!=null)
+		 {
+		 b=new DaoImple().addToCart(product,hs.getAttribute("name").toString());
 		 List<Cart> lcart=null;
-		 lcart=new DaoImple().viewCart(name);
+		 lcart=new DaoImple().viewCart(hs.getAttribute("name").toString());
 		 File f=new File("F://cloud");
 		 File filenames[]=f.listFiles();
-		 ModelAndView mav=new ModelAndView("welcomecustomer");
+		 mav=new ModelAndView("customer");
 		 mav.addObject("cart",lcart); 
 		 mav.addObject("filenames",filenames);
 		 mav.addObject("filepath",f);
 		 mav.addObject("msg","viewcartlist");
+		 }
+		 else
+		 {
+			    mav=new ModelAndView("index");
+				mav.addObject("msg","customer");
+		 }
 		 return mav;
 	 }
+	
+	
 	@RequestMapping("/reqviewcart")
 	public ModelAndView viewCart(@ModelAttribute("cart") Cart cart,HttpSession hs)
 	{
@@ -177,7 +307,7 @@ public class HomeController
 		 lcart=new DaoImple().viewCart(name);
 		 File f=new File("F://cloud");
 		 File filenames[]=f.listFiles();
-		 ModelAndView mav=new ModelAndView("welcomecustomer");
+		 ModelAndView mav=new ModelAndView("customer");
 		 mav.addObject("cart",lcart); 
 		 mav.addObject("filenames",filenames);
 		 mav.addObject("filepath",f);
@@ -189,8 +319,15 @@ public class HomeController
 	@RequestMapping("/reqaddaddress")
     public ModelAndView addAddress()
     {
-    	ModelAndView mav=new ModelAndView("welcomecustomer");
+    	ModelAndView mav=new ModelAndView("customer");
     	mav.addObject("msg","addressinfo");
+    	return mav;
+    }
+	@RequestMapping("/reqaddaddress2")
+    public ModelAndView addAddress2()
+    {
+    	ModelAndView mav=new ModelAndView("customer");
+    	mav.addObject("msg","addressinfo2");
     	return mav;
     }
     @RequestMapping("/reqaddress")
@@ -207,7 +344,7 @@ public class HomeController
     	ModelAndView mav=null;
     	if(b)
     	{
-    	 mav=new ModelAndView("welcomecustomer");
+    	 mav=new ModelAndView("customer");
     	mav.addObject("address",l);
        	mav.addObject("cart",lcart); 
     	mav.addObject("odate",d.toString());
@@ -217,7 +354,8 @@ public class HomeController
     }
     @RequestMapping("/reqexistingaddress")
     public ModelAndView reqexistingaddress(HttpSession session)
-    { String name=session.getAttribute("name").toString();
+    { 
+    	String name=session.getAttribute("name").toString();
     	boolean b=false;
     	List<Cart> lcart=null;
     	lcart=new DaoImple().viewCart(name);
@@ -225,13 +363,30 @@ public class HomeController
 		 java.sql.Date d=new java.sql.Date(d1.getYear(),d1.getMonth(),d1.getDate());
 		 List<Address> l=new DaoImple().viewAddress(name);	
     	ModelAndView mav=null;
-    	 mav=new ModelAndView("welcomecustomer");
+    	 mav=new ModelAndView("customer");
     	mav.addObject("address",l);
     
     	mav.addObject("cart",lcart); 
-		 
+		mav.addObject("msg","viewcartlist");
     	mav.addObject("odate",d.toString());
     	mav.addObject("msg","tran");
+    	return mav;
+    }
+    
+    @RequestMapping("/reqexistingaddress2")
+    public ModelAndView reqexistingaddress2(HttpSession session,@ModelAttribute("product") Product product)
+    { 
+    	String name=session.getAttribute("name").toString();
+    	boolean b=false;
+    	 Date d1=new Date();
+		 java.sql.Date d=new java.sql.Date(d1.getYear(),d1.getMonth(),d1.getDate());
+		 List<Address> l=new DaoImple().viewAddress(name);	
+    	ModelAndView mav=null;
+    	 mav=new ModelAndView("customer");
+    	mav.addObject("address",l);
+    	mav.addObject("product",product);
+    	mav.addObject("odate",d.toString());
+    	mav.addObject("msg","tran2");
     	return mav;
     }
     
@@ -239,16 +394,17 @@ public class HomeController
     @RequestMapping("/reqaddnewaddress")
     public ModelAndView addnewaddress()
     {
-    	ModelAndView mav=new ModelAndView("welcomecustomer");
+    	ModelAndView mav=new ModelAndView("customer");
        	mav.addObject("msg","newaddress");
        	return mav;
     }
     
     @RequestMapping("/reqviewaddress")
     public ModelAndView viewAddress(HttpSession session)
-    {String name=session.getAttribute("name").toString();
+    {
+    	String name=session.getAttribute("name").toString();
     	List<Address> l=new DaoImple().viewAddress(name);
-    	ModelAndView mav=new ModelAndView("welcomecustomer");
+    	ModelAndView mav=new ModelAndView("customer");
     	mav.addObject("address",l);
     	mav.addObject("msg","viewaddress");
     	return mav;
@@ -347,7 +503,7 @@ public class HomeController
 		 al=new DaoImple().viewAllProducts();
 	     File f=new File("F://cloud");
 	    File filenames[]=f.listFiles();
-		 ModelAndView mav=new ModelAndView("welcomecustomer");
+		 ModelAndView mav=new ModelAndView("customer");
 		 mav.addObject("products",al); 
 		 mav.addObject("filenames",filenames);  // adding imges info
 		 mav.addObject("filepath",f);            // adding cloud folder path
@@ -418,12 +574,12 @@ public class HomeController
 		{
 			List<Product> plist=null;
 			plist=new DaoImple().displayProducts(catname);
-			
+			/*
 			for(Product p:plist)
 			{
 				System.out.println("h: "+p.getPname()+" : "+p.getFilename());
 			}
-			
+			*/
 			ModelAndView mav=new ModelAndView("adminoperations");
 			File f=new File("F://cloud");
 		    File filenames[]=f.listFiles();
@@ -514,7 +670,7 @@ public class HomeController
 			 lcart=new DaoImple().viewCart(name);
 			 File f=new File("F://cloud");
 			 File filenames[]=f.listFiles();
-			 ModelAndView mav=new ModelAndView("welcomecustomer");
+			 ModelAndView mav=new ModelAndView("customer");
 			 mav.addObject("cart",lcart); 
 			 mav.addObject("filenames",filenames);
 			 mav.addObject("filepath",f);
@@ -523,35 +679,68 @@ public class HomeController
 		 
 		}
 		@RequestMapping("/reqsearchproducts")
-		 public ModelAndView  searchProducts(@RequestParam("search") String search,HttpSession ses)
+		 public ModelAndView  searchProducts(@RequestParam("search") String search,HttpSession sesSearch)
 		 {
 			 List<Product> al=null;
-			 ses.setAttribute("search", search);
+			 sesSearch.setAttribute("search", search);
 			 al=new DaoImple().searchProducts(search);
 			
 		     File f=new File("F://cloud");
 		     File filenames[]=f.listFiles();
-			 ModelAndView mav=new ModelAndView("welcomecustomer");
+			 ModelAndView mav=new ModelAndView("customer");
 			 mav.addObject("products",al); 
 			 mav.addObject("filenames",filenames);
 			 mav.addObject("filepath",f);
 			 mav.addObject("msg","search");
 			 return mav;
 		 }
+		@RequestMapping("/reqsearchproducts2")
+		 public ModelAndView  searchProducts2(@RequestParam("search") String search,HttpSession sesSearch)
+		 {
+			 List<Product> al=null;
+			 sesSearch.setAttribute("search", search);
+			 al=new DaoImple().searchProducts(search);
+			
+		     File f=new File("F://cloud");
+		     File filenames[]=f.listFiles();
+			 ModelAndView mav=new ModelAndView("customer");
+			 mav.addObject("products",al); 
+			 mav.addObject("filenames",filenames);
+			 mav.addObject("filepath",f);
+			 mav.addObject("msg","search2");
+			 return mav;
+		 }
 		@RequestMapping("/reqviewproductbyid")
 		public ModelAndView viewProductByID(@RequestParam("pid") String pid)
 		{
 			List<Product> al=null;
-			 al=new DaoImple().viewProductById(pid);
-		     File f=new File("F://cloud");
-		     File filenames[]=f.listFiles();
-			 ModelAndView mav=new ModelAndView("welcomecustomer");
-			 mav.addObject("products",al); 
-			 mav.addObject("filenames",filenames);
-			 mav.addObject("filepath",f);
-			 mav.addObject("msg","viewbyid");
-			 return mav;
+			al=new DaoImple().viewProductById(pid);
+			File f=new File("F://cloud");
+		    File filenames[]=f.listFiles();
+		    ModelAndView mav=new ModelAndView("customer");
+			mav.addObject("products",al); 
+			mav.addObject("filenames",filenames);
+			mav.addObject("filepath",f);
+			mav.addObject("msg","viewbyid");
+			return mav;
 		}
+		
+		@RequestMapping("/reqviewproductinhome")
+		public ModelAndView viewProductInHome(@RequestParam("pid") String pid)
+		{
+			List<Product> al=null;
+			al=new DaoImple().viewProductById(pid);
+			
+			File f=new File("F://cloud");
+		    File filenames[]=f.listFiles();
+		    ModelAndView mav=new ModelAndView("payment");
+			mav.addObject("products",al); 
+			mav.addObject("filenames",filenames);
+			mav.addObject("filepath",f);
+			mav.addObject("msg","viewbyidinhome");
+			return mav;
+		}
+		
 		 @RequestMapping("/reqeditcat")
 			public ModelAndView viewcatbyid(@ModelAttribute("cid") String cid)
 			{ Category c=new Category();
@@ -583,7 +772,7 @@ public class HomeController
 	    	List<Orders> l=new DaoImple().viewOrders(name);
 	    	 File f=new File("F://cloud");
 			 File filenames[]=f.listFiles();
-			 ModelAndView mav=new ModelAndView("welcomecustomer");
+			 ModelAndView mav=new ModelAndView("customer");
 			 mav.addObject("orders",l); 
 			 mav.addObject("filenames",filenames);
 			 mav.addObject("filepath",f);
@@ -631,13 +820,13 @@ public class HomeController
 	    	String name=session.getAttribute("name").toString();
 	    	List<Cart> lcart=null;
 	    	lcart=new DaoImple().viewCart(name);
-	    	ModelAndView mav=new ModelAndView("welcomecustomer");
+	    	ModelAndView mav=new ModelAndView("customer");
 	    	mav.addObject("cart",lcart); 
 			mav.addObject("msg","transactions");
 	    	return mav;
 	    }
 	    @RequestMapping("/reqtransaction")
-	    public ModelAndView transactions(@ModelAttribute("transactions") Transactions transactions,@ModelAttribute("cart") Cart cart,HttpSession session)
+	    public ModelAndView transactions(@ModelAttribute("transactions") Transactions transactions,@ModelAttribute("cart") Cart cart,HttpSession session,@ModelAttribute("product") Product product)
 	    {
 	    	boolean b=false;
 	    	ModelAndView  mav=null;
@@ -646,30 +835,32 @@ public class HomeController
 	    	b=new DaoImple().transactions(transactions,name);
 	    	Transactions tr=new Transactions();
 	    	tr.setTid(transactions.getTid()); 
+	    	
 	    	List<Cart> lc=new DaoImple().viewCart(name);
 	    	boolean b1=new DaoImple().myOrders(lc,tr);
+	    	boolean b2=new DaoImple().orders(product, tr);
 	    	if(b && b1)
 	    	{
-	    	mav=new ModelAndView("welcomecustomer");
+	    	mav=new ModelAndView("customer");
 	    	mav.addObject("msg","order");
 	    	}
 	    	return mav;
 	    }
 	    
 	    @RequestMapping("/reqsorting")
-	    public ModelAndView sorting(@RequestParam("value") String value,HttpSession session)
+	    public ModelAndView sorting(@RequestParam("value") String value,HttpSession sesSearch)
 	    {
 	    	List<Product> al=null;
 	    	
 	    	System.out.println("value:"+value);
-	    	String search=session.getAttribute("search").toString();
+	    	String search=sesSearch.getAttribute("search").toString();
 			al=new DaoImple().sortingProducts(search,value);
 			 
 			 File f=new File("F://cloud");
 		     File filenames[]=f.listFiles();
 		     System.out.println("value:"+value);
 				
-			 ModelAndView mav=new ModelAndView("welcomecustomer");
+			 ModelAndView mav=new ModelAndView("customer");
 			 mav.addObject("products",al); 
 			 mav.addObject("filenames",filenames);
 			 mav.addObject("filepath",f);
@@ -684,11 +875,11 @@ public class HomeController
 			 al=new DaoImple().viewProductById(pid);
 		     File f=new File("F://cloud");
 		     File filenames[]=f.listFiles();
-			 ModelAndView mav=new ModelAndView("welcomecustomer");
+			 ModelAndView mav=new ModelAndView("customer");
 			 mav.addObject("products",al); 
 			 mav.addObject("filenames",filenames);
 			 mav.addObject("filepath",f);
-			 mav.addObject("msg","buyproduct");
+			 mav.addObject("msg","addressinfo");
 			 return mav;
 	    }
 	    @RequestMapping("/reqbuy")
@@ -704,7 +895,7 @@ public class HomeController
 			 lcart=new DaoImple().viewCart(name);
 			 File f=new File("F://cloud");
 			 File filenames[]=f.listFiles();
-			 ModelAndView mav=new ModelAndView("welcomecustomer");
+			 ModelAndView mav=new ModelAndView("customer");
 			 mav.addObject("cart",lcart); 
 			 mav.addObject("filenames",filenames);
 			 mav.addObject("filepath",f);

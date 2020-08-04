@@ -8,37 +8,43 @@
 
 body
 {
-background-image:url(webstuff/images/pic2.jpg);
-background-size: cover;
-background-position: center;
 box-sizing: border-box;
 font-family: inherit;
+background-size:100% 100%;	
+background-repeat: no-repeat;
+background-color: #E5E8E8;
+}
+
+h1
+{
+	background-color : #fff;
+	
 }
 
 .categories
 {
-	border: 2px;
-	border-color:blue;
+	border: 2px solid ;
+	border-color:white;
 	background-color: #fff;
-	padding:10px;
+	background-size:100% 100%;	
+	background-repeat: no-repeat;
 }
 .categories ul
 {  
 	display: inline-flex;
 	list-style: none;
-	
-	
 }
 .categories ul li
 {
 
-	padding:20px;
-	 border-color:red;
+	padding:40px;
+	border-color:red;
 	border-right-color:red;
 }
 .categories ul li:hover
 {
-	background-color: DBE2A0;	
+	color:white;
+	transform: scale(1.5);	
 }
 .categories ul li a
 {
@@ -47,28 +53,40 @@ font-family: inherit;
 
 .fashion
 {
-	border: 2px;
-	border-color:blue;
+	border: 2px solid ;
+	border-color:white;
 	background-color: #fff;
-	padding:10px;
+	background-size:100% 100%;	
+	background-repeat: no-repeat;
 }
 .fashion ul
 {  
 	display: inline-flex;
 	list-style: none;
 	
-	
 }
+button
+{
+	background-color: skyblue;
+	width:10%;
+	height: 6.5%;
+	font-size: 20px;
+	float: right;	
+}
+
+
+
 .fashion ul li
 {
 
-	padding:20px;
-	 border-color:red;
+	padding:40px;
+	border-color:red;
 	border-right-color:red;
 }
 .fashion ul li:hover
 {
-	background-color: DBE2A0;	
+	color:white;
+	transform: scale(1.5);
 }
 .fashion ul li a
 {
@@ -77,10 +95,11 @@ font-family: inherit;
 
 .Sports
 {
-	border: 2px;
-	border-color:blue;
+	border: 2px solid ;
+	border-color:white;
 	background-color: #fff;
-	padding:10px;
+	background-size:100% 100%;	
+background-repeat: no-repeat;
 }
 .Sports ul
 {  
@@ -92,22 +111,91 @@ font-family: inherit;
 .Sports ul li
 {
 
-	padding:20px;
+	padding:40px;
 	 border-color:red;
 	border-right-color:red;
 }
 .Sports ul li:hover
 {
-	background-color: DBE2A0;	
+	color:white;
+	transform: scale(1.5);	
 }
 .Sports ul li a
 {
 	text-decoration: none;
 }
 
+
+.Housing
+{
+	border: 2px solid ;
+	border-color:white;
+	background-color: #fff;
+	background-size:100% 100%;	
+background-repeat: no-repeat;
+}
+.Housing ul
+{  
+	display: inline-flex;
+	list-style: none;
+	
+	
+}
+.Housing ul li
+{
+
+	padding:40px;
+	 border-color:red;
+	border-right-color:red;
+}
+.Housing ul li:hover
+{
+	color:white;
+	transform: scale(1.5);	
+}
+.Housing ul li a
+{
+	text-decoration: none;
+}
+
+
+.Groceries
+{
+	border: 2px solid ;
+	border-color:white;
+	background-color: #fff;
+	background-size:100% 100%;	
+background-repeat: no-repeat;
+}
+.Groceries ul
+{  
+	display: inline-flex;
+	list-style: none;
+	
+	
+}
+.Groceries ul li
+{
+
+	padding:40px;
+	 border-color:red;
+	border-right-color:red;
+}
+.Groceries ul li:hover
+{
+	color:white;
+	transform: scale(1.5);	
+}
+.Groceries ul li a
+{
+	text-decoration: none;
+}
+
+
+
 .login
 {
-	background:skyblue;
+	background:2E86C1;
 	border-color: black;
 	text-align: center;
 }
@@ -121,7 +209,7 @@ font-family: inherit;
 
 .login ul li
 {
-	width: 120px;
+	width: 250px;
 	margin: 15px;
 	padding: 15px;
 }
@@ -130,9 +218,8 @@ font-family: inherit;
 		color:white;
 		text-decoration: none;		
 }
-.active, .login ul li:hover
+ .login ul li:hover
 {
-		background: #2bab0d;
 		border-radius: 3px;
 }
 
@@ -150,7 +237,7 @@ font-family: inherit;
 {
 	display: block;
 	position: absolute;
-	background: rgb(0,100,0);
+	background: #1C2833;
 	margin-top: 15px;
 	margin-left: -15px;
 }
@@ -189,7 +276,7 @@ font-family: inherit;
 {
 	display: block;
 	position: absolute;
-	background: rgb(0,100,0);
+	background: #1C2833;
 	margin-top: 15px;
 	margin-left: -15px;
 }

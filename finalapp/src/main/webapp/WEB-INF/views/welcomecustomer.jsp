@@ -152,26 +152,22 @@ return false;
 <form action="reqaddtocart2">
 <table border=0 width=70%>
 <tr bgcolor=pink align="center">
-<!--  <td>Pname</td><td>PPrice</td><td>Pqty</td><td>Productinfo</td><td>Image</td><td colspan=2 align=center>Actions</td></tr>-->
 <c:forEach items="${products}" var="p">   
 <c:forEach items="${filenames}" var="f">   
 <c:if test="${p.getFilename()==f.getName()}">
 <tr align=center ><td rowspan="6"><img src=${filepath}/${f.getName()} height=300 width=300></td></tr>
-
-<tr align=center><td>Product name:${p.getPname()}</td>
-<tr align=center><td>Price:${p.getPprice()}</td>
-
+<tr align=center><td>Product name:<input type=text value=${p.getPname()} name=pname></td>
+<tr align=center><td>Price:<input type=text value=${p.getPprice()} name=pprice></td>
 <tr align=center><td>Quantity:<select name="pqty">
 <option>1</option>
 <option>2</option>
 <option>3</option>
 <option>4</option>
 <option>5</option>
-
 <tr align=center><td>Product info:${p.getProductinfo()}</td></tr>
+<input type=hidden value="${p.getPid()}" name="pid">
+<input type=hidden value="${p.getFilename()}" name="filename">
 <tr align=center><td><input type=submit value=Add> </td></tr>
-<input type=hidden value="${p.getPid() }" name="pid">
-<input type=hidden value="${p.getFilename() }" name="filename">
 </c:if>
 </c:forEach>
 </c:forEach>
@@ -210,14 +206,13 @@ return false;
 <c:if test="${msg=='viewcartlist' || msg=='total'}">
 <center>
 <body bgcolor=#86D55C>
-<form action="reqaddtocart2">
 <table border=1 width=80%>
 <tr bgcolor=pink align="center">
 <td>Pname</td><td>Price</td><td>Quantity</td><td>Image</td><td colspan=2 align=center>Actions</td></tr>
 <c:forEach items="${cart}" var="c">   
 <c:forEach items="${filenames}" var="f">   
 <c:if test="${c.getFilename()==f.getName()}">
-<td>${c.getPname()}</td>
+<tr  align="center"><td>${c.getPname()}</td>
 <td>${c.getPrice()}</td>
 <td>${c.getQty()}</td>
 <td><img src=${filepath}/${f.getName()} height=100 width=100 name=filename></td><td><a href=reqdeletecart?pid=${c.getPid()}>Remove</a> </td></tr>

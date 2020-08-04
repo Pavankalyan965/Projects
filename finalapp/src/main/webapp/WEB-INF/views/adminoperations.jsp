@@ -78,11 +78,12 @@ function addproductvalidate()
 
 
 
-<body bgcolor=DACBC9>
+<body bgcolor=#BFC9CA>
 <div class="login">
 <h2>
 <ul>
-<li class="active"><a href="reqhomepage">Home</a></li>
+	<li class="active"><a href="reqhomepage">Home</a>
+	</li>
 <li><a href="">Products</a>
 	<div class="sub-menu-product">
 		<ul>
@@ -99,9 +100,18 @@ function addproductvalidate()
 		</ul>	
 	</div>
 </li>
-<li><a href="reqviewallorders">Orders</a></li>
-<li><a href="reqchecksalesbetweendates">Check sales between dates</a></li>
-<li><a href="reqadminlogout">Logout </a></li>
+<li><a href="">Orders</a>
+	<div class="sub-menu-manage">
+		<ul>
+			<li><a href="reqviewallorders">View all orders</a></li>
+			<li><a href="reqchecksalesbetweendates">Check sales between dates</a></li>
+		</ul>	
+	</div>
+	
+
+
+</li>
+<li><a href="reqlogout">Logout </a></li>
 </ul></h2>
 </div>
 
