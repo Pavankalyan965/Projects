@@ -32,7 +32,7 @@ import finalapp.model.Transactions;
 @Controller
 public class HomeController 
 {
-	public static final String cloud="F:\\cloud";
+	public static final String cloud="webstuff/cloud";
 	@RequestMapping("/")
 	public ModelAndView homePage()
 	{
